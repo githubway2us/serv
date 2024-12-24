@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .block {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .block h3 {
+            margin: 0;
+            color: #333;
+        }
+        .block p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .block hash {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blockchain Details</h1>
+    {% if blocks %}
+        <div>
+            {% for block in blocks %}
+                <div class="block">
+                    <h3>Index: {{ block.index }}</h3>
+                    <p><strong>Message:</strong> {{ block.message }}</p>
+                    <p><strong>Time:</strong> {{ block.timestamp }}</p>
+                    <p><strong>Hash:</strong> <span>{{ block.hash }}</span></p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No blockchain data available.</p>
+    {% endif %}
+</body>
+</html>

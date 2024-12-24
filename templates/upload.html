@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Blockchain File</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ1QZDUW9HkB2E3ZzIIV6bAq2wM6FzOguj7EK7nCjIV5gZ4lFJrjL1y6B0qk" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('{{ url_for('static', filename='sky-4576072_960_720.jpg') }}'); /* ดึงรูปจาก static */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-container {
+            padding: 20px;
+        }
+        .upload-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+        .info {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+        .file-list {
+            margin-top: 20px;
+        }
+        .file-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .file-list li {
+            padding: 5px 0;
+        }
+        .file-list li a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        h1, h2, h3 {
+            color: #fff;
+        }
+        a {
+            color: #4CAF50;
+        }
+        input[type="file"], input[type="text"], input[type="password"], input[type="submit"] {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Custom button styling */
+        .btn-back-home {
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px; /* Rounded corners */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-back-home:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-back-home:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mb-4">Upload Blockchain File</h1>
+    <div class="info">
+        <p><strong>Note:</strong></p>
+        <ul>
+            <li>The file <code>.db</code> must be in the same folder as the program.</li>
+            <li>Please double-check before uploading to the system.</li>
+            <li>Ensure the file is the correct database created by the system and contains complete data.</li>
+            <li>The file must not have been tampered with or modified in any way.</li>
+        </ul>
+    </div>
+    <form class="file-list" method="POST" enctype="multipart/form-data" class="form-container">
+        <div class="mb-3">
+            <label for="file" class="form-label">Select a Blockchain Database File:</label>
+            <input type="file" name="file" id="file" class="form-control" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="upload-btn">Upload</button>
+        </div>
+    </form>
+    <p><strong>:</strong></p>
+    <!-- Add a stylish "Back to Home" button at the bottom -->
+    <div class="text-center mt-4">
+        <a href="/" class="btn-back-home">Back to Home</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76A0rLgR4Kd/UQPm8m5wJcx0gY1zF7nHNV9KKsG3Kf80KESx8scn/rx5tvki8kg" crossorigin="anonymous"></script>
+</body>
+</html>

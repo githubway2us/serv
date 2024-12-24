@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain File Upload</title>
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='5bec5fd084c87622e1a49337561d021c.webp') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            color: white;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tabs button {
+            padding: 12px 20px;
+            margin-right: 15px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .tabs button:hover {
+            background-color: #45a049;
+        }
+        .tabs .active {
+            background-color: #3e8e41;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .instructions {
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .file-list {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .file-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .file-list li {
+            padding: 10px;
+            background-color: #222;
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+        .file-list li a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-size: 16px;
+        }
+        h1, h2, h3 {
+            color: #fff;
+            text-align: center;
+        }
+        a {
+            color: #4CAF50;
+        }
+        input[type="file"], input[type="text"], input[type="password"], input[type="submit"] {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Blockchain File Upload</h1>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <p><button class="tab-button active" onclick="showTab(event, 'upload')">Main info</button></p>
+        <p><button class="tab-button" onclick="showTab(event, 'register')">Register</button></p>
+        <p><button class="tab-button" onclick="showTab(event, 'login')">Login</button></p>
+         <p><button class="tab-button" onclick="showTab(event, 'instructions')">Instructions</button></p>
+         <p><button class="tab-button" onclick="location.href='/mn'">คู่มือ</button></p>
+ 
+    </div>
+
+    <!-- Upload Tab -->
+    <div id="upload" class="tab-content active">
+        <h2>Upload Blockchain File</h2>
+        <p class="instructions">Welcome to the file upload page. Please ensure that you have registered and received your ID to upload files.</p>
+
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <ul>
+                <li>To upload a file, please make sure you are logged in with a valid ID.</li>
+                <li>Click on the "Upload File" button below to select the blockchain file.</li>
+                <li>The uploaded files will be saved to the system and can be viewed later.</li>
+            </ul>
+        </div>
+
+        <h3>เลือกไฟล์ DB เพื่อดูตาราง blocks</h3>
+        <form action="/view_db" method="POST">
+            <label for="file_name">เลือกไฟล์ .db:</label>
+            <select name="file_name" id="file_name">
+                {% for file in files %}
+                    {% if file.endswith('.db') %}
+                        <option value="{{ file }}">{{ file }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <button type="submit">ดูข้อมูล</button>
+        </form>
+
+        <div class="file-list">
+            <h3>📁 Uploaded Files:</h3>
+            <ul>
+                {% if files %}
+                    {% for file in files %}
+                        <li style="color: #4CAF50;">📄 {{ file }}</li>
+                    {% endfor %}
+                {% else %}
+                    <p style="color: white;">🔒 No files uploaded yet.</p>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Register Tab -->
+    <div id="register" class="tab-content">
+        <h2>Register</h2>
+        <p class="instructions">To upload files, you need to register and obtain a user ID. Please provide your username and password to get started.</p>
+
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <!-- Login Tab -->
+    <div id="login" class="tab-content">
+        <h2>Login</h2>
+        <p class="instructions">Please enter your username and password to log in and upload files.</p>
+
+        <form method="POST" action="{{ url_for('login') }}">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <!-- Instructions Tab -->
+    <div id="instructions" class="tab-content">
+        <h2>Welcome to our Blockchain Program! Here are the instructions and key features of the program:</h2>
+
+        <div class="instructions">
+            <h3>1. Getting Started</h3>
+            <p>When you first start the program, the system will check the database. If no blocks exist, the Genesis Block (the first block) will be created automatically.</p>
+
+            <h3>2. Storing Messages in the Blockchain</h3>
+            <p>Users can input a new message, and the program will create a new block with the necessary details such as Index, Message, Timestamp, Previous Hash, and Current Hash.</p>
+
+            <h3>3. Displaying Blockchain Data</h3>
+            <p>The program will display all the blocks in the system, and you can select and view the details of each block.</p>
+
+            <h3>4. Verifying Blockchain Integrity</h3>
+            <p>The program will verify the link between each block by checking the Previous Hash and alert you if there is an issue with the data integrity.</p>
+
+            <h3>5. Interface Design</h3>
+            <p>The program is designed with an easy-to-use interface, providing fields to input data and a window to display block details.</p>
+
+            <h3>6. Database Management</h3>
+            <p>The program uses SQLite to store blockchain data, ensuring fast and stable data storage.</p>
+
+            <h3>7. Closing the Program</h3>
+            <p>When the program is closed, it will save the state and safely disconnect from the database.</p>
+
+            <h3>Key Features of the Program:</h3>
+            <ul>
+                <li><strong>Security:</strong> Data recorded in the blockchain cannot be altered once a block is created.</li>
+                <li><strong>Transparency:</strong> Users can view the blockchain data at any time.</li>
+                <li><strong>Ease of Use:</strong> The interface is designed to be simple and convenient for users.</li>
+                <li><strong>Verification:</strong> The system verifies the integrity of data in each blockchain block to ensure that information is not altered or tampered with.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showTab(event, tabName) {
+            var tabs = document.querySelectorAll('.tab-content');
+            var buttons = document.querySelectorAll('.tab-button');
+            
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            buttons.forEach(function(button) {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>

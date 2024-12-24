@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Blockchain File</title>
+    <!-- ลิงก์ไปยัง Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ1QZDUW9HkB2E3ZzIIV6bAq2wM6FzOguj7EK7nCjIV5gZ4lFJrjL1y6B0qk" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: white;
+            background-image: url('{{ url_for('static', filename='sky-4576072_960_720.jpg') }}'); /* ดึงรูปจาก static */
+            background-size: cover;  /* ขยายรูปพื้นหลังให้เต็มหน้าจอ */
+            background-position: center;  /* จัดตำแหน่งรูปให้กลาง */
+            background-attachment: fixed; /* ให้ภาพพื้นหลังคงที่ขณะเลื่อนหน้า */
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); /* เพิ่มพื้นหลังโปร่งแสง */
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-container {
+            padding: 20px;
+        }
+        .upload-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+        .info {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br>
+            <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+    </div>
+
+</body>
+</html>

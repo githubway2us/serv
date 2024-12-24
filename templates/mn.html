@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือการใช้งาน</title>
+    
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            background-image: url('{{ url_for('static', filename='mn/bg.png') }}'); /* ใช้ภาพพื้นหลัง */
+            background-size: cover; /* ให้ภาพขยายเต็มหน้าจอ */
+            background-position: center; /* จัดตำแหน่งภาพตรงกลาง */
+        }
+
+        #instructions {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .image-gallery {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .image-item {
+            text-align: center;
+        }
+        /* Custom button styling */
+        .btn-back-home {
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px; /* Rounded corners */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .image {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-item p {
+            color: rgb(255, 255, 255);
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .instructions h3, .instructions p {
+            background-color: rgba(0, 0, 0, 0.5); /* สีพื้นหลังดำ โปร่งใส 50% */
+            color: #fff; /* เปลี่ยนสีตัวอักษรเป็นสีขาวเพื่อให้อ่านง่าย */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Instructions Tab with Images -->
+<div id="instructions" class="tab-content active">
+    <h2>Welcome to our Blockchain Program! Here are the instructions and key features of the program:</h2>
+
+    <div class="instructions">
+        <h3>1. Getting Started</h3>
+        <p>When you first start the program, the system will check the database. If no blocks exist, the Genesis Block (the first block) will be created automatically.</p>
+    </div>
+
+    <!-- Image Gallery with Slick Carousel -->
+    <div class="image-gallery">
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/01.png') }}" alt="Image 01" class="image">
+            <p>รูปที่ 1: แสดงถึงการ โอนคะแนนที่ได้จากเกมส์ นำไปเก็บเป็นเหรียญลงในกระเป๋า</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/02.png') }}" alt="Image 02" class="image">
+            <p>รูปที่ 2: เมื่อโอนสำเร็จ จะขึ้นลักษณะดังกล่าว</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/03.png') }}" alt="Image 03" class="image">
+            <p>รูปที่ 3: การบันทึกข้อความเพื่อ นำไปบรรจุลงบล็อกเชน</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/04.png') }}" alt="Image 04" class="image">
+            <p>รูปที่ 4: เมื่อกด Save Message จะขึ้นหน้าต่าง แจ้งว่า ระบบจะโอนเหรียญที่ได้จากการปิด บล็อก ลงในกระเป๋าใบแรกที่ระบบสร้างขึ้นใหม่</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/05.png') }}" alt="Image 05" class="image">
+            <p>รูปที่ 5: แสดงหน้า กระเป๋าที่สามารถสร้างใหม่ได้ไม่จำกัด</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/06.png') }}" alt="Image 06" class="image">
+            <p>รูปที่ 6: การโอนเหรียญไปกระเป๋าอื่นๆ</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/07.png') }}" alt="Image 07" class="image">
+            <p>รูปที่ 7: แสดงธุรกรรมของการโอนเหรียญ</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/08.png') }}" alt="Image 08" class="image">
+            <p>รูปที่ 8: การเก็บ ฐานข้อมูลบล็อก เข้าสู่ Server หลัก เพื่อเก็บรักษาข้อมูล และมีการใช้งานในอนาคต</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/09.png') }}" alt="Image 09" class="image">
+            <p>รูปที่ 9: การโอนฐานข้อมูลต้อง สมัครเพื่อใช้ ไอดี ในการเก็บชื่อฐานข้อมูล</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/10.png') }}" alt="Image 10" class="image">
+            <p>รูปที่ 10: หน้าเข้าสู่ ระบบ ก่อนจะทำการโอนฐานข้อมูลเข้าสู่ระบบ</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/11.png') }}" alt="Image 11" class="image">
+            <p>รูปที่ 11: การเลือกฐานข้อมูลที่สร้าง จะอยู่ตำแหน่งเดียวกับที่ รันโปรแกรม ** ต้องโอน ไฟล์ ที่ชื่อว่า blockchain.db เท่านั้น</p>
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='mn/12.png') }}" alt="Image 12" class="image">
+            <p>รูปที่ 12: ไฟล์ที่ถูกบันทึกสมบูรณ์ จะขึ้นในรายการฐานข้อมูลหลัก ตาม ไอดีของผู้ที่โอน</p>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <h3>2. Storing Messages in the Blockchain</h3>
+        <p>Users can input a new message, and the program will create a new block with the necessary details such as Index, Message, Timestamp, Previous Hash, and Current Hash.</p>
+    </div>
+
+</div>
+<p><strong>:</strong></p>
+<!-- Add a stylish "Back to Home" button at the bottom -->
+<div class="text-center mt-4">
+    <a href="/" class="btn-back-home">Back to Home</a>
+</div>
+</div>
+
+<!-- Slick Carousel JS -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.image-gallery').slick({
+            infinite: true,
+            slidesToShow: 3,    // จำนวนภาพที่จะแสดงในแต่ละครั้ง
+            slidesToScroll: 1,   // เลื่อนทีละ 1 ภาพ
+            dots: true,          // แสดงจุดเลื่อน
+            autoplay: true,      // เปิดใช้งานการเลื่อนอัตโนมัติ
+            autoplaySpeed: 2000, // ความเร็วในการเลื่อนอัตโนมัติ (มิลลิวินาที)
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,  // จำนวนภาพที่จะแสดงในหน้าจอขนาดกลาง
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,  // จำนวนภาพที่จะแสดงในหน้าจอขนาดเล็ก
+                    }
+                }
+            ]
+        });
+    });
+</script>
+
+</body>
+</html>

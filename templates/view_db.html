@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ดูข้อมูลจากตาราง blocks</title>
+    <style>
+        /* การตั้งค่าพื้นฐาน */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: rgb(0, 0, 0);
+            background-image: url('{{ url_for('static', filename='lovepik-future-sense-technology-4.jpg') }}'); /* ดึงรูปจาก static */
+            background-size: cover;  /* ขยายรูปพื้นหลังให้เต็มหน้าจอ */
+            background-position: center;  /* จัดตำแหน่งรูปให้กลาง */
+            background-attachment: fixed; /* ให้ภาพพื้นหลังคงที่ขณะเลื่อนหน้า */
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+
+        /* กล่องหลัก */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* ตาราง */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #ecf0f1;
+        }
+
+        tr:hover td {
+            background-color: #f1c40f;
+        }
+
+        /* ปรับให้ตารางรองรับการแสดงผลบนอุปกรณ์มือถือ */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+                font-size: 14px;
+            }
+            th, td {
+                padding: 10px;
+            }
+        }
+
+        /* ปุ่มย้อนกลับ */
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ข้อมูลจากตาราง blocks ในไฟล์ {{ file_name }}</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <!-- แสดงหัวข้อคอลัมน์ของตาราง -->
+                    <th>ID</th>
+                    <th>Data</th>
+                    <!-- เพิ่มคอลัมน์ตามที่คุณต้องการ -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %} 
+                    <tr> 
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <!-- เพิ่มข้อมูลจากคอลัมน์เพิ่มเติม -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- ปุ่มย้อนกลับ -->
+        <a href="{{ url_for('index') }}" class="back-button">ย้อนกลับไปหน้าแรก</a>
+    </div>
+
+</body>
+</html>

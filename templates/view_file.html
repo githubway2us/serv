@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View File</title>
+</head>
+<body>
+    <h1>File: {{ filename }}</h1>
+    {% if rows %}
+        <table border="1">
+            <tr>
+                <th>Index</th>
+                <th>Message</th>
+                <th>Timestamp</th>
+            </tr>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No data found in the blocks table.</p>
+    {% endif %}
+</body>
+</html>
